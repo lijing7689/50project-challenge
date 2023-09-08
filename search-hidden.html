@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./font/iconfont.css">
+    <style>
+        body {
+            background-image: linear-gradient(90deg, #7d5fff, #7158e2);
+        }
+
+        .box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            line-height: 100%;
+            width: 60px;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            overflow: hidden;
+            align-items: center;
+            background-color: #fff;
+            transition: width 0.3s linear;
+        }
+
+        #input {
+            display: none;
+            outline: none;
+            border: none;
+            height: 100%;
+            font-size: 18px;
+            max-width: 200px;
+        }
+
+        .search {
+            width: 60px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            background-color: #fff;
+        }
+
+        ::-ms-input-placeholder {
+            color: #ddd;
+        }
+
+        ::-webkit-input-placeholder {
+            color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <input type="text" id="input" placeholder="Search...">
+        <div class="iconfont icon-search search"></div>
+    </div>
+    <script>
+        let search = document.querySelector('.search')
+        let box = document.querySelector('.box')
+        let input = document.querySelector('#input')
+        search.addEventListener('click', function () {
+            if (input.style.display == 'block') {
+                box.style.width = '60px'
+                input.style.display = 'none'
+            } else {
+                box.style.width = '260px'
+                input.style.display = 'block'
+
+            }
+        })
+    </script>
+</body>
+
+</html>

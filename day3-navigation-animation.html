@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./font/iconfont.css">
+    <style>
+        body {
+            background-color: #333;
+            color: #222;
+            margin: 0;
+            padding: 0;
+            /* overflow: hidden; */
+        }
+
+        .nav {
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: #ff7979;
+            z-index: 99;
+            transform: rotate(90deg);
+            transition: transform 0.5s linear;
+        }
+
+        .circle-position {
+            position: absolute;
+            right: 0;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            padding-left: 30px;
+            box-sizing: border-box;
+        }
+
+        .box:first-child {
+            transform: rotate(-90deg);
+        }
+
+        .animation {
+            background-color: #fff;
+            width: 100vw;
+            min-height: 100vh;
+            z-index: -1;
+            box-sizing: border-box;
+            padding: 80px 10%;
+            transition: transform 0.7s linear;
+            transform-origin: top left;
+        }
+
+        .content {
+            margin: auto;
+            max-width: 1000px;
+        }
+
+        .content img {
+            width: 100%;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 150px;
+            height: 150px;
+        }
+
+        .function {
+            width: 100px;
+            height: 100%;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            transition: transform 1s linear;
+            transform: translateX(-150px);
+            color: #fff;
+        }
+
+        .row-fn {
+            display: flex;
+            align-items: center;
+        }
+
+        .row-fn span:first-child {
+            margin-right: 20px;
+        }
+
+        .account,
+        .hkmessage {
+            transition: transform 0.5s linear;
+        }
+
+        @keyframes moveAcount {
+            100% {
+                transform: translateX(50px);
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="circle-position">
+            <div class="box box-nav">
+                <span class="iconfont icon-nav" style="color:#fff;font-size: 25px;"></span>
+            </div>
+            <div class="box box-del">
+                <span class="iconfont icon-del" style="color:#fff;font-size: 25px;"></span>
+            </div>
+        </div>
+    </div>
+    <div class="animation">
+        <div class="content">
+            <h1>Amazing Article</h1>
+            <small>Florin Pop</small>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium quia in ratione dolores cupiditate,
+                maxime aliquid impedit dolorem nam dolor omnis atque fuga labore modi veritatis porro laborum minus,
+                illo,
+                maiores recusandae cumque ipsa quos. Tenetur, consequuntur mollitia labore pariatur sunt quia harum aut.
+                Eum
+                maxime dolorem provident natus veritatis molestiae cumque quod voluptates ab non, tempore cupiditate?
+                Voluptatem, molestias culpa. Corrupti, laudantium iure aliquam rerum sint nam quas dolor dignissimos in
+                error placeat quae temporibus minus optio eum soluta cupiditate! Cupiditate saepe voluptates laudantium.
+                Ducimus consequuntur perferendis consequatur nobis exercitationem molestias fugiat commodi omnis.
+                Asperiores
+                quia tenetur nemo ipsa.</p>
+            <h3>My Dog</h3>
+            <img src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2100&amp;q=80"
+                alt="doggy">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit libero deleniti rerum quo, incidunt vel
+                consequatur culpa ullam. Magnam facere earum unde harum. Ea culpa veritatis magnam at aliquid.
+                Perferendis
+                totam placeat molestias illo laudantium? Minus id minima doloribus dolorum fugit deserunt qui vero
+                voluptas,
+                ut quia cum amet temporibus veniam ad ea ab perspiciatis, enim accusamus asperiores explicabo provident.
+                Voluptates sint, neque fuga cum illum, tempore autem maxime similique laborum odio, magnam esse.
+                Aperiam?
+            </p>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="function">
+            <div class="row-fn home">
+                <span class="iconfont icon-home"></span>
+                <span>HOME</span>
+            </div>
+            <div class="row-fn account">
+                <span class="iconfont icon-account_filled"></span>
+                <span>ACCOUNT</span>
+            </div>
+            <div class="row-fn hkmessage">
+                <span class="iconfont icon-hkmessage"></span>
+                <span>MESSAGE</span>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script>
+    let animation = document.querySelector('.animation')
+    let account = document.querySelector('.account')
+    let nav = document.querySelector('.nav')
+    let boxDel = document.querySelector('.box-del')
+    let boxNav = document.querySelector('.box-nav')
+    let circlePosition = document.querySelector('.circle-position')
+    let hkmessage = document.querySelector('.hkmessage')
+    let functions = document.querySelector('.function')
+    boxDel.addEventListener('click', () => {
+        nav.style.transform = 'rotate(90deg)'
+        animation.style.transform = 'rotate(0deg)'
+        functions.style.transform = 'translateX(-160px)'
+        functions.style.transition = 'transform 0.6s linear'
+    })
+    boxNav.addEventListener('click', () => {
+        nav.style.transform = 'rotate(0deg)'
+        animation.style.transform = 'rotate(-15deg)'
+        account.style.transform = 'translateX(10px)'
+        hkmessage.style.transform = 'translateX(20px)'
+        functions.style.transform = 'translateX(0)'
+    })
+</script>
+
+</html>

@@ -1,0 +1,44 @@
+{
+  "id": "4230919",
+  "name": "50_练习",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1174321",
+      "name": "nav",
+      "font_class": "nav",
+      "unicode": "e66b",
+      "unicode_decimal": 58987
+    },
+    {
+      "icon_id": "278286",
+      "name": "home",
+      "font_class": "home",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "438496",
+      "name": "hk_message",
+      "font_class": "hkmessage",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "6049301",
+      "name": "del",
+      "font_class": "del",
+      "unicode": "e684",
+      "unicode_decimal": 59012
+    },
+    {
+      "icon_id": "14538321",
+      "name": "account_filled",
+      "font_class": "account_filled",
+      "unicode": "e695",
+      "unicode_decimal": 59029
+    }
+  ]
+}

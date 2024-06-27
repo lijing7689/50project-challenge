@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rustclick</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/theme.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="icon" type="image/x-icon" href="https://imageconvert.org/uploads/icon1708669578.ico">
+    <link rel="icon" type="image/x-icon" href="./img/rustclick.ico">
+
+    <!-- Basic stylesheet -->
+    <meta name="keywords" content="Rustclick Web">
+    <meta name="description" content="Rustclick Web">
+    <meta name="baidu-site-verification" content="IhG6pxTcCY">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <!-- Default Theme -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <style>
+        .gm-style .icon {
+            background-image: url(https://maps.gstatic.com/mapfiles/embed/images/entity11.png);
+            background-size: 70px 210px
+        }
+
+        @media (-webkit-min-device-pixel-ratio:1.2),
+        (min-resolution:1.2dppx),
+        (min-resolution:116dpi) {
+            .gm-style .icon {
+                background-image: url(https://maps.gstatic.com/mapfiles/embed/images/entity11_hdpi.png);
+                background-size: 70px 210px
+            }
+        }
+
+        .gm-style .experiment-icon {
+            background-image: url(https://maps.gstatic.com/mapfiles/embed/images/exp2.png);
+            background-size: 109px 276px
+        }
+
+        @media (-webkit-min-device-pixel-ratio:1.2),
+        (min-resolution:1.2dppx),
+        (min-resolution:116dpi) {
+            .gm-style .experiment-icon {
+                background-image: url(https://maps.gstatic.com/mapfiles/embed/images/exp2_hdpi.png);
+                background-size: 109px 276px
+            }
+        }
+
+        .gm-style .place-card div,
+        .gm-style .place-card a,
+        .gm-style .default-card div,
+        .gm-style .default-card a {
+            color: #5b5b5b;
+            font-family: Roboto, Arial;
+            font-size: 12px;
+            -moz-user-select: text;
+            -webkit-user-select: text;
+            -ms-user-select: text;
+            user-select: text
+        }
+
+        .gm-style .place-card,
+        .gm-style .default-card,
+        .gm-style .directions-card {
+            cursor: default
+        }
+
+        .gm-style .place-card-large {
+            padding: 9px 4px 9px 11px
+        }
+
+        .gm-style .place-card-medium {
+            width: auto;
+            padding: 9px 11px 9px 11px
+        }
+
+        .gm-style .default-card {
+            padding: 5px 14px 5px 14px
+        }
+
+        .gm-style .place-card a:link,
+        .gm-style .default-card a:link,
+        .gm-style .directions-card a:link {
+            text-decoration: none;
+            color: #1a73e8
+        }
+
+        .gm-style .place-card a:visited,
+        .gm-style .default-card a:visited,
+        .gm-style .directions-card a:visited {
+            color: #1a73e8
+        }
+
+        .gm-style .place-card a:hover,
+        .gm-style .default-card a:hover,
+        .gm-style .directions-card a:hover {
+            text-decoration: underline
+        }
+
+        .gm-style .place-desc-large {
+            width: 200px;
+            display: inline-block
+        }
+
+        .gm-style .place-desc-medium {
+            display: inline-block
+        }
+
+        .gm-style .place-card .place-name {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-weight: 500;
+            font-size: 14px;
+            color: black
+        }
+
+        html[dir="rtl"] .gm-style .place-name {
+            padding-right: 5px
+        }
+
+        .gm-style .place-card .address {
+            margin-top: 6px
+        }
+
+        .gm-style .tooltip-anchor {
+            width: 100%;
+            position: relative;
+            float: right;
+            z-index: 1
+        }
+
+        .gm-style .navigate .tooltip-anchor {
+            width: 50%;
+            display: none
+        }
+
+        .gm-style .navigate:hover .tooltip-anchor {
+            display: inline
+        }
+
+        .gm-style .tooltip-anchor>.tooltip-tip-inner,
+        .gm-style .tooltip-anchor>.tooltip-tip-outer {
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            background-color: transparent;
+            position: absolute;
+            left: -8px
+        }
+
+        .gm-style .tooltip-anchor>.tooltip-tip-outer {
+            border-bottom: 8px solid #cbcbcb
+        }
+
+        .gm-style .tooltip-anchor>.tooltip-tip-inner {
+            border-bottom: 8px solid white;
+            z-index: 1;
+            top: 1px
+        }
+
+        .gm-style .tooltip-content {
+            position: absolute;
+            top: 8px;
+            left: -70px;
+            line-height: 137%;
+            padding: 10px 12px 10px 13px;
+            width: 210px;
+            margin: 0;
+            border: 1px solid #cbcbcb;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 2px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            background-color: white
+        }
+
+        html[dir="rtl"] .gm-style .tooltip-content {
+            left: -10px
+        }
+
+        .gm-style .navigate {
+            display: inline-block;
+            vertical-align: top;
+            height: 43px;
+            padding: 0 7px
+        }
+
+        .gm-style .navigate-link {
+            display: block
+        }
+
+        .gm-style .place-card .navigate-text {
+            margin-top: 5px;
+            text-align: center;
+            color: #1a73e8;
+            font-size: 12px;
+            max-width: 100px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis
+        }
+
+        .gm-style .place-card .hidden {
+            margin: 0;
+            padding: 0;
+            height: 0;
+            overflow: hidden
+        }
+
+        .gm-style .navigate-icon {
+            width: 22px;
+            height: 22px;
+            overflow: hidden;
+            margin: 0 auto
+        }
+
+        .gm-style .navigate-icon {
+            border: 0
+        }
+
+        .gm-style .navigate-separator {
+            display: inline-block;
+            width: 1px;
+            height: 43px;
+            vertical-align: top;
+            background: -webkit-linear-gradient(top, #fbfbfb, #e2e2e2, #fbfbfb);
+            background: -moz-linear-gradient(top, #fbfbfb, #e2e2e2, #fbfbfb);
+            background: -ms-linear-gradient(top, #fbfbfb, #e2e2e2, #fbfbfb);
+            background: -linear-gradient(top, #fbfbfb, #e2e2e2, #fbfbfb)
+        }
+
+        .gm-style .review-box {
+            padding-top: 5px
+        }
+
+        .gm-style .place-card .review-box-link {
+            padding-left: 8px
+        }
+
+        .gm-style .place-card .review-number {
+            display: inline-block;
+            color: #5b5b5b;
+            font-weight: 500;
+            font-size: 14px
+        }
+
+        .gm-style .review-box .rating-stars {
+            display: inline-block
+        }
+
+        .gm-style .rating-star {
+            display: inline-block;
+            width: 11px;
+            height: 11px;
+            overflow: hidden
+        }
+
+        .gm-style .directions-card {
+            color: #5b5b5b;
+            font-family: Roboto, Arial;
+            background-color: white;
+            -moz-user-select: text;
+            -webkit-user-select: text;
+            -ms-user-select: text;
+            user-select: text
+        }
+
+        .gm-style .directions-card-medium-large {
+            height: 61px;
+            padding: 10px 11px
+        }
+
+        .gm-style .directions-info {
+            padding-left: 25px
+        }
+
+        .gm-style .directions-waypoint {
+            height: 20px
+        }
+
+        .gm-style .directions-address {
+            font-weight: 400;
+            font-size: 13px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            color: black
+        }
+
+        .gm-style .directions-icon {
+            float: left;
+            vertical-align: top;
+            position: relative;
+            top: -1px;
+            height: 50px;
+            width: 20px
+        }
+
+        .gm-style .directions-icon div {
+            width: 15px;
+            height: 45px;
+            overflow: hidden
+        }
+
+        .gm-style .directions-separator {
+            position: relative;
+            height: 1px;
+            margin-top: 3px;
+            margin-bottom: 4px;
+            background-color: #ccc
+        }
+
+        .gm-style .navigate-icon {
+            background-position: 0 0
+        }
+
+        .gm-style .navigate:hover .navigate-icon {
+            background-position: 48px 0
+        }
+
+        .gm-style .rating-full-star {
+            background-position: 48px 165px
+        }
+
+        .gm-style .rating-half-star {
+            background-position: 35px 165px
+        }
+
+        html[dir="rtl"] .gm-style .rating-half-star {
+            background-position: 10px 165px
+        }
+
+        .gm-style .rating-empty-star {
+            background-position: 23px 165px
+        }
+
+        .gm-style .directions-icon {
+            background-position: 0 144px
+        }
+
+        .gm-style .info {
+            height: 30px;
+            width: 30px;
+            background-position: 19px 36px
+        }
+
+        .gm-style .bottom-actions {
+            padding-top: 10px
+        }
+
+        .gm-style .bottom-actions .google-maps-link {
+            display: inline-block
+        }
+
+        .saved-from-source-link {
+            margin-top: 5px;
+            max-width: 331px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div id="home" class="header-section flex-box-middle section gradiant-background overflow-hidden">
+
+
+            <!-- particles.js container -->
+            <div id="particles-js" class="particles-container">
+                <canvas class="particles-js-canvas-el" width="835" height="1196"
+                    style="width: 100%; height: 100%;"></canvas>
+            </div>
+
+
+            <div id="navigation" class="navigation is-transparent affix-top" data-spy="affix" data-offset-top="5">
+                <nav class="navbar  navbar-default">
+                    <div class="container">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#site-collapse-nav" aria-expanded="false" id="nav-btn">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="./index.html">
+                                <img class="logo logo-light" src="https://rustclick.com/img/logo/rc_logo.png"
+                                    alt="logo">
+                                <img class="logo logo-color" src="./img/rc_logo.png" alt="logo">
+                            </a>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse font-secondary" id="site-collapse-nav">
+                            <ul class="nav nav-list navbar-nav navbar-right">
+                                <li><a class="nav-item" href="./index.html">Home</a></li>
+                                <li class=""><a class="nav-item" href="#about">About</a></li>
+                                <li class=""><a class="nav-item" href="#features">Features</a></li>
+                                <li><a class="nav-item" href="#partner">Partner</a></li>
+                                <li><a class="nav-item" href="#contacts">Contacts</a></li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container -->
+                </nav>
+            </div><!-- .navigation -->
+
+            <div class="header-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="header-texts">
+                                <h1 class="cd-headline clip is-full-width wow fadeInUp" data-wow-duration=".5s"
+                                    style="visibility: visible; animation-duration: 0.5s; animation-name: fadeInUp;">
+                                    <span class="cd-words-wrapper" style="width: 540px; overflow: hidden;">
+                                        <!-- <b class="is-hidden">Optimize ad revenue</b> -->
+                                        <b class="is-visible">Advertise to the right audience</b>
+                                    </span>
+                                </h1>
+                                <p class="lead wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".3s"
+                                    style="visibility: visible; animation-duration: 0.5s; animation-delay: 0.3s; animation-name: fadeInUp;">
+                                    We provide professional support and efficient monetization to help you acquire the
+                                    most profit from your website content!</p>
+                            </div>
+                        </div><!-- .col -->
+                        <div class="col-md-6">
+                            <!-- <div class="wow fadeInRight" data-wow-duration=".5s"
+                                style="visibility: visible; animation-duration: 0.5s; animation-name: fadeInRight;"><img
+                                    src="https://zmedia.vn/themes/zmedia/assets/images/hs-1.png" alt="header screen">
+                            </div> -->
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+                </div><!-- .container -->
+            </div><!-- .header-content -->
+        </div>
+        <div class="feature-boxes">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="box wow fadeInUp" data-wow-duration=".5s"
+                            style="visibility: visible; animation-duration: 0.5s; animation-name: fadeInUp;">
+                            <div class="box-icon-custom">
+                                <img src="./img/Slice_4@2x.png" alt="Revenue Booster">
+                            </div>
+                            <h4>Revenue Booster</h4>
+                        </div>
+                    </div><!-- .col -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="box wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".3s"
+                            style="visibility: visible; animation-duration: 0.5s; animation-delay: 0.3s; animation-name: fadeInUp;">
+                            <div class="box-icon-custom">
+                                <img src="./img/Slice_4@2x(1).png" alt="Recovery Tool">
+                            </div>
+                            <h4>Recovery Tool</h4>
+                        </div>
+                    </div><!-- .col -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="box wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".6s"
+                            style="visibility: visible; animation-duration: 0.5s; animation-delay: 0.6s; animation-name: fadeInUp;">
+                            <div class="box-icon-custom">
+                                <img src="./img/Slice_4@2x(2).png" alt="ADS TOOL">
+                            </div>
+                            <h4>ADS TOOL</h4>
+                        </div>
+                    </div><!-- .col -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="box wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".9s"
+                            style="visibility: visible; animation-duration: 0.5s; animation-delay: 0.9s; animation-name: fadeInUp;">
+                            <div class="box-icon-custom">
+                                <img src="./img/Slice_4@2x(3).png" alt="Ad Mapper">
+                            </div>
+                            <h4>AD MAPPER</h4>
+                        </div>
+                    </div><!-- .col -->
+                </div><!-- .row -->
+            </div><!-- .container -->
+        </div>
+
+        <div id="about" class="about-section section pb-90 white-bg">
+            <div class="container tab-fix">
+                <div class="section-head text-center">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h2 class="heading quick-font">About
+                                <span>Rustclick</span>
+                            </h2>
+                            <p>Rustclick is a unit with more than 3 years of experience in operating and developing in
+                                the field of online advertising.</p>
+                        </div>
+                    </div>
+                </div><!-- .section-head -->
+                <div class="row tab-center mobile-center big-box">
+                    <div class="col-md-6">
+                        <div class="txt-entry">
+                            <p>Partner of more than 30 professional and largest domestic and foreign advertisers.</p>
+                            <p>The staff are experts with many years of experience in operating and optimizing
+                                advertising revenue.</p>
+                            <p>Currently operates and develops over 50 major websites . With over 5 billion ad
+                                impressions per month.</p>
+                        </div>
+                    </div><!-- .col -->
+                    <div class="col-md-6">
+                        <div class="video wow fadeInRight" data-wow-duration=".5s"
+                            style="visibility: visible; animation-duration: 0.5s; animation-name: fadeInRight;">
+                            <img src="./img/Slice_5@2x.png" alt="about-video">
+                        </div>
+                    </div><!-- .col -->
+                </div><!-- .row -->
+            </div><!-- .container -->
+        </div>
+
+
+
+        <div id="features" class="features-section section bg-color">
+            <div class="container tab-fix">
+                <div class="section-head heading-light text-center">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h2 class="heading heading-light">Rustclick in numbers</h2>
+                        </div>
+                    </div>
+                </div><!-- .section-head -->
+                <div class="features-content pt-10" style="padding-bottom:7rem">
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <div class="home-numbers__item">
+                                <figure class="home-numbers__icon">
+                                    <img src="./img/Slice_6@2x(2).png" alt="Earned for publishers">
+                                </figure>
+                                <p>Grow up 50% revenue</p>
+                            </div>
+                        </div><!-- .col -->
+                        <div class="col-md-3 mb-3">
+                            <div class="home-numbers__item">
+                                <figure class="home-numbers__icon">
+                                    <img src="./img/Slice_6@2x(1).png" alt="Earned for publishers">
+                                </figure>
+                                <p>50+ websites and mobile applications around the world</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="home-numbers__item">
+                                <figure class="home-numbers__icon">
+                                    <img src="./img/Slice_6@2x.png" alt="Mobile applications">
+                                </figure>
+                                <p>5 billion ad impressions per month</p>
+                            </div>
+                        </div><!-- .col -->
+                        <div class="col-md-3 mb-3">
+                            <div class="home-numbers__item">
+                                <figure class="home-numbers__icon">
+                                    <img src="./img/Slice_7@2x.png" alt="Mobile applications">
+                                </figure>
+                                <p>20+ people in our team</p>
+                            </div>
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+                </div><!-- .features-content -->
+            </div><!-- .container -->
+        </div>
+        <div class="statistics-section section pb-90 grey-background">
+            <div class="container">
+                <div class="section-head heading-light text-center">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h2 class="heading" style="color: #666;">Cooperation Process</h2>
+                        </div>
+                    </div>
+                </div><!-- .section-head -->
+                <div class="row text-center">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="box wow fadeIn" data-wow-duration=".5s"
+                            style="visibility: visible; animation-duration: 0.5s; animation-name: fadeIn;">
+                            <div class="box-icon">
+                                <img src="./img/Slice_8@2x(3).png" alt="">
+                            </div>
+                            <h5 style="font-size:1.5rem">Cooperate</h5>
+                        </div>
+                    </div><!-- .col  -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="box wow fadeIn" data-wow-duration=".5s" data-wow-delay=".3s"
+                            style="visibility: visible; animation-duration: 0.5s; animation-delay: 0.3s; animation-name: fadeIn;">
+                            <div class="box-icon">
+                                <img src="./img/Slice_8@2x(1).png" alt="">
+                            </div>
+                            <h5 style="font-size:1.5rem">Integration</h5>
+                        </div>
+                    </div><!-- .col  -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="box wow fadeIn" data-wow-duration=".5s" data-wow-delay=".6s"
+                            style="visibility: visible; animation-duration: 0.5s; animation-delay: 0.6s; animation-name: fadeIn;">
+                            <div class="box-icon">
+                                <img src="./img/Slice_8@2x(2).png" alt="">
+                            </div>
+                            <h5 style="font-size:1.5rem">Optimize Performance</h5>
+                        </div>
+                    </div><!-- .col  -->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="box wow fadeIn" data-wow-duration=".5s" data-wow-delay=".9s"
+                            style="visibility: visible; animation-duration: 0.5s; animation-delay: 0.9s; animation-name: fadeIn;">
+                            <div class="box-icon">
+                                <img src="./img/Slice_8@2x.png" alt="">
+                            </div>
+                            <h5 style="font-size:1.5rem">Make Payment</h5>
+                        </div>
+                    </div><!-- .col  -->
+                </div><!-- .row  -->
+            </div><!-- .container  -->
+        </div>
+
+
+        <div class="statistics-section section pb-90 grey-background" id="partner">
+            <div class="container">
+                <div class="section-head heading-light text-center">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h2 class="heading" style="color: #666;">We are working with</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="partner-carousel has-carousel owl-carousel owl-theme owl-loaded" data-loop="true"
+                            data-dots="true" data-auto="true" data-navs="false">
+                            <div class="owl-stage-outer">
+                                <div class="owl-stage"
+                                    style="transform: translate3d(-1950px, 0px, 0px); transition: all 0.3s ease 0s; width: 5362.5px;">
+                                    <div class="owl-item" style="width: 213.75px; margin-right: 30px;">
+                                        <div class="item text-center">
+                                            <div class="partner">
+                                                <div class="partner-img"><img src="./img/Google_adsence.png"
+                                                        alt="partner-logo"></div>
+                                                <div class="partner-img"><img src="./img/Tiktok.png" alt="partner-logo">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="owl-item" style="width: 213.75px; margin-right: 30px;">
+                                        <div class="item text-center">
+                                            <div class="partner">
+                                                <div class="partner-img"><img src="./img/Google_admob.png"
+                                                        alt="partner-logo"></div>
+                                                <div class="partner-img"><img src="./img/IronSource.png"
+                                                        alt="partner-logo"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="owl-item" style="width: 213.75px; margin-right: 30px;">
+                                        <div class="item text-center">
+                                            <div class="partner">
+                                                <div class="partner-img"><img src="./img/Google_ad_manager.png"
+                                                        alt="partner-logo"></div>
+                                                <div class="partner-img"><img src="./img/Applovin.png"
+                                                        alt="partner-logo"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="owl-item" style="width: 213.75px; margin-right: 30px;">
+                                        <div class="item text-center">
+                                            <div class="partner">
+                                                <div class="partner-img"><img src="./img/Facebook.png"
+                                                        alt="partner-logo"></div>
+                                                <div class="partner-img"><img src="./img/Bing.png" alt="partner-logo">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="owl-item" style="width: 213.75px; margin-right: 30px;">
+                                        <div class="item text-center">
+                                            <div class="partner">
+                                                <div class="partner-img"><img src="./img/Yahoo.png" alt="partner-logo">
+                                                </div>
+                                                <div class="partner-img"><img src="./img/Outbrain.png"
+                                                        alt="partner-logo"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="owl-item" style="width: 213.75px; margin-right: 30px;">
+                                        <div class="item text-center">
+                                            <div class="partner">
+                                                <div class="partner-img"><img src="./img/Taboola.png"
+                                                        alt="partner-logo"></div>
+                                                <div class="partner-img"><img src="./img/Mgid.png" alt="partner-logo">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-controls">
+                                <div class="owl-nav">
+                                    <div class="owl-prev" style="display: none;"><i class="fa fa-angle-left"></i></div>
+                                    <div class="owl-next" style="display: none;"><i class="fa fa-angle-right"></i></div>
+                                </div>
+
+                            </div>
+                        </div><!-- .testimonial-carousel  -->
+                    </div><!-- .col  -->
+                </div><!-- .row  -->
+            </div><!-- .container  -->
+        </div>
+
+        <div id="contacts" class="contact-section section bg-color pb-90">
+            <div class="container">
+                <div class="section-head heading-light text-center">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h2 class="heading heading-light">Get In Touch</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="figure-list">
+                            <p>Jasmine</p>
+                            <p>Chief Executive Officer</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="figure-list">
+                            <p>Flor</p>
+                            <p>Business Development</p>
+                            <p>Skype: live:.cid.c984cd645679aeda</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="figure-list">
+                            <p>Cherry</p>
+                            <p>Business Development</p>
+                            <p>Skype: live:.cid.5f1a4befe724d09e</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="contact-info white-bg">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h6><img src="./img/Slice_10@2x.png" /> UNIT E 32 , 1 / F ,SELWYN FACTORY
+                                        BUILDING,
+                                        NO.404 KWUN TONG ROADKL HONG KONG</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3691.0717159579244!2d114.2206580769471!3d22.31312734242722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2shk!4v1708668545562!5m2!1sen!2shk"
+                            width="100%" height="270" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div><!-- .col  -->
+                </div><!-- .row  -->
+            </div><!-- .container  -->
+        </div>
+
+        <div class="footer-section section">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <ul class="footer-navigation inline-list">
+                            <li><a class="nav-item" href="./index.html">Home</a></li>
+                            <li><a class="nav-item" href="#about">About</a></li>
+                            <li><a class="nav-item" href="#features">Features</a></li>
+                            <li><a class="nav-item" href="#partner">Partner</a></li>
+                            <li><a class="nav-item" href="#contacts">Contacts</a></li>
+                        </ul>
+                        <ul class="footer-links inline-list">
+                            <li>Copyright © 2024 Rustclick.</li>
+                        </ul>
+                    </div><!-- .col  -->
+                </div><!-- .row  -->
+            </div><!-- .container  -->
+        </div>
+        <!-- 使用NuxtLink 来跳转到其他的路由 -->
+        <!-- 文件名叫About.vue对应的路由就是 /About-->
+
+    </div>
+    <!-- scripts -->
+    <script src="./js/particles.js"></script>
+    <script src="./js/app.js"></script>
+
+    <!-- stats.js -->
+    <script src="./js/lib/stats.js"></script>
+    <script src="./js/owlcarousel/owl.carousel.min.js"></script>
+    <script src="./js/owlcarousel/owl.carousel.js"></script>
+
+    <script>
+        // $(document).ready(function () {
+        //     $(".owl-carousel").owlCarousel({
+        //         items: 4,
+        //         loop: true, // 是否循环滚动  
+        //         autoplay: true, // 是否自动滚动  
+        //         autoplayTimeout: 3000 // 自动滚动的时间间隔（毫秒）
+        //     }); 
+        // });
+        function carousel(num) {
+            $(document).ready(function () {
+                $(".owl-carousel").owlCarousel({
+                    items: num,
+                    loop: true, // 是否循环滚动  
+                    autoplay: true, // 是否自动滚动  
+                    autoplayTimeout: 3000 // 自动滚动的时间间隔（毫秒）
+                });
+
+            });
+        }
+
+
+        // 获取id为navigation的元素  
+        var navigation = document.getElementById('navigation');
+        var navBtn = document.getElementById('nav-btn');
+        var siteCollapseNavnavBtn = document.getElementById('site-collapse-nav');
+
+        function checkScreenSize() {
+            // 获取屏幕宽度  
+            var screenWidth = window.innerWidth;
+            // 如果屏幕宽度小于991px  
+            if (screenWidth < 991) {
+                carousel(2)
+                // 修改navigation元素的类名为test  
+                navigation.className = 'navigation is-transparent affix';
+
+            } else {
+                carousel(4)
+                // 如果不超过10px，将navigation的类名重置为原来的值（假设为'nav'） 
+                navigation.className = 'navigation is-transparent affix-top';
+            }
+        }
+
+        // 监听resize事件，当屏幕大小变化时触发  
+        window.addEventListener('resize', checkScreenSize);
+
+        // 初始检查屏幕大小  
+        checkScreenSize();
+
+        // 监听页面滚动事件  
+        window.addEventListener('scroll', function () {
+            // 检查滚动距离是否超过10px  
+            if (window.scrollY > 5) {
+                navigation.className = 'navigation is-transparent affix';
+            } else {
+                // 如果不超过10px，将navigation的类名重置为原来的值（假设为'nav'） 
+                navigation.className = 'navigation is-transparent affix-top';
+            }
+        });
+
+
+        navBtn.addEventListener('click', function () {
+            // 在这里编写点击按钮后要执行的代码  
+            if (navBtn.className == 'navbar-toggle') {
+                navBtn.className = 'navbar-toggle collapsed'
+                siteCollapseNavnavBtn.className = 'navbar-collapse font-secondary collapse'
+            } else {
+                navBtn.className = 'navbar-toggle'
+                siteCollapseNavnavBtn.className = 'navbar-collapse font-secondary collapse in'
+            }
+
+        });
+        siteCollapseNavnavBtn.addEventListener('click', function () {
+            // 在这里编写点击按钮后要执行的代码   
+            siteCollapseNavnavBtn.className = 'navbar-collapse font-secondary collapse'
+            navBtn.className = 'navbar-toggle collapsed'
+        });
+    </script>
+</body>
+
+</html>

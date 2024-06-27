@@ -1,0 +1,25 @@
+@font-face {
+    font-family: Poppins-Regular;
+    font-weight: 400;
+    src: url("./Poppins/Poppins-Regular.ttf");
+}
+
+@font-face {
+    font-family: ProstoOne-Regular;
+    src: url("./Prosto_One/ProstoOne-Regular.ttf");
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url("./Poppins/Poppins-Bold.ttf");
+}
+
+@font-face {
+    font-family: Poppins-ExtraLigh;
+    src: url("./Poppins/Poppins-ExtraLight.ttf");
+}
+
+@font-face {
+    font-family: Prosto_One;
+    src: url("./Poller_One/PollerOne-Regular.ttf");
+}

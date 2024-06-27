@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SubDigi - Premier Content Provider & Monetizer | AI Advertising, Web & Mobile App Development, SEO, Content
+        Marketing</title>
+    <link rel="stylesheet" href="./static/css/style.css">
+    <link rel="stylesheet" href="./static/css/theme.css">
+    <link rel="stylesheet" href="./static/css/common.css">
+    <link rel="icon" type="image/x-icon" href="https://imageconvert.org/uploads/icon1708669578.ico">
+    <link rel="icon" type="image/x-icon" href="./static/img/subDigi.ico">
+
+    <!-- Basic stylesheet -->
+    <meta name="keywords"
+        content="Content Provider, Monetizer, AI Advertising, Web Development, Mobile App Development, SEO, Search Engine Optimization, Content Marketing, Data Analytics, Media Buying, Online Advertising, Revenue Growth, AI Solutions">
+    <meta name="description"
+        content="SubDigi is a leading content provider and monetizer, specializing in AI-powered advertising solutions, Web & Mobile App Development, SEO, Content Marketing, Analytics & Data Insights, and Media Buying. We deliver diverse, high-quality content and integrate advanced ad technologies to maximize revenue and drive substantial growth. Enhance your digital marketing strategies with our cutting-edge technologies.">
+    <meta name="baidu-site-verification" content="IhG6pxTcCY">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <!-- Default Theme -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="./static/css/swiper-bundle.min.css" />
+    <style>
+        .gm-style .icon {
+            background-image: url(https://maps.gstatic.com/mapfiles/embed/images/entity11.png);
+            background-size: 70px 210px
+        }
+
+        @media (-webkit-min-device-pixel-ratio:1.2),
+        (min-resolution:1.2dppx),
+        (min-resolution:116dpi) {
+            .gm-style .icon {
+                background-image: url(https://maps.gstatic.com/mapfiles/embed/images/entity11_hdpi.png);
+                background-size: 70px 210px
+            }
+        }
+
+        .gm-style .experiment-icon {
+            background-image: url(https://maps.gstatic.com/mapfiles/embed/images/exp2.png);
+            background-size: 109px 276px
+        }
+
+        @media (-webkit-min-device-pixel-ratio:1.2),
+        (min-resolution:1.2dppx),
+        (min-resolution:116dpi) {
+            .gm-style .experiment-icon {
+                background-image: url(https://maps.gstatic.com/mapfiles/embed/images/exp2_hdpi.png);
+                background-size: 109px 276px
+            }
+        }
+
+        .gm-style .place-card div,
+        .gm-style .place-card a,
+        .gm-style .default-card div,
+        .gm-style .default-card a {
+            color: #5b5b5b;
+            font-family: Roboto, Arial;
+            font-size: 12px;
+            -moz-user-select: text;
+            -webkit-user-select: text;
+            -ms-user-select: text;
+            user-select: text
+        }
+
+        .gm-style .place-card,
+        .gm-style .default-card,
+        .gm-style .directions-card {
+            cursor: default
+        }
+
+        .gm-style .place-card-large {
+            padding: 9px 4px 9px 11px
+        }
+
+        .gm-style .place-card-medium {
+            width: auto;
+            padding: 9px 11px 9px 11px
+        }
+
+        .gm-style .default-card {
+            padding: 5px 14px 5px 14px
+        }
+
+        .gm-style .place-card a:link,
+        .gm-style .default-card a:link,
+        .gm-style .directions-card a:link {
+            text-decoration: none;
+            color: #1a73e8
+        }
+
+        .gm-style .place-card a:visited,
+        .gm-style .default-card a:visited,
+        .gm-style .directions-card a:visited {
+            color: #1a73e8
+        }
+
+        .gm-style .place-card a:hover,
+        .gm-style .default-card a:hover,
+        .gm-style .directions-card a:hover {
+            text-decoration: underline
+        }
+
+        .gm-style .place-desc-large {
+            width: 200px;
+            display: inline-block
+        }
+
+        .gm-style .place-desc-medium {
+            display: inline-block
+        }
+
+        .gm-style .place-card .place-name {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-weight: 500;
+            font-size: 14px;
+            color: black
+        }
+
+        html[dir="rtl"] .gm-style .place-name {
+            padding-right: 5px
+        }
+
+        .gm-style .place-card .address {
+            margin-top: 6px
+        }
+
+        .gm-style .tooltip-anchor {
+            width: 100%;
+            position: relative;
+            float: right;
+            z-index: 1
+        }
+
+        .gm-style .navigate .tooltip-anchor {
+            width: 50%;
+            display: none
+        }
+
+        .gm-style .navigate:hover .tooltip-anchor {
+            display: inline
+        }
+
+        .gm-style .tooltip-anchor>.tooltip-tip-inner,
+        .gm-style .tooltip-anchor>.tooltip-tip-outer {
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            background-color: transparent;
+            position: absolute;
+            left: -8px
+        }
+
+        .gm-style .tooltip-anchor>.tooltip-tip-outer {
+            border-bottom: 8px solid #cbcbcb
+        }
+
+        .gm-style .tooltip-anchor>.tooltip-tip-inner {
+            border-bottom: 8px solid white;
+            z-index: 1;
+            top: 1px
+        }
+
+        .gm-style .tooltip-content {
+            position: absolute;
+            top: 8px;
+            left: -70px;
+            line-height: 137%;
+            padding: 10px 12px 10px 13px;
+            width: 210px;
+            margin: 0;
+            border: 1px solid #cbcbcb;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 2px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            background-color: white
+        }
+
+        html[dir="rtl"] .gm-style .tooltip-content {
+            left: -10px
+        }
+
+        .gm-style .navigate {
+            display: inline-block;
+            vertical-align: top;
+            height: 43px;
+            padding: 0 7px
+        }
+
+        .gm-style .navigate-link {
+            display: block
+        }
+
+        .gm-style .place-card .navigate-text {
+            margin-top: 5px;
+            text-align: center;
+            color: #1a73e8;
+            font-size: 12px;
+            max-width: 100px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis
+        }
+
+        .gm-style .place-card .hidden {
+            margin: 0;
+            padding: 0;
+            height: 0;
+            overflow: hidden
+        }
+
+        .gm-style .navigate-icon {
+            width: 22px;
+            height: 22px;
+            overflow: hidden;
+            margin: 0 auto
+        }
+
+        .gm-style .navigate-icon {
+            border: 0
+        }
+
+        .gm-style .navigate-separator {
+            display: inline-block;
+            width: 1px;
+            height: 43px;
+            vertical-align: top;
+            background: -webkit-linear-gradient(top, #fbfbfb, #e2e2e2, #fbfbfb);
+            background: -moz-linear-gradient(top, #fbfbfb, #e2e2e2, #fbfbfb);
+            background: -ms-linear-gradient(top, #fbfbfb, #e2e2e2, #fbfbfb);
+            background: -linear-gradient(top, #fbfbfb, #e2e2e2, #fbfbfb)
+        }
+
+        .gm-style .review-box {
+            padding-top: 5px
+        }
+
+        .gm-style .place-card .review-box-link {
+            padding-left: 8px
+        }
+
+        .gm-style .place-card .review-number {
+            display: inline-block;
+            color: #5b5b5b;
+            font-weight: 500;
+            font-size: 14px
+        }
+
+        .gm-style .review-box .rating-stars {
+            display: inline-block
+        }
+
+        .gm-style .rating-star {
+            display: inline-block;
+            width: 11px;
+            height: 11px;
+            overflow: hidden
+        }
+
+        .gm-style .directions-card {
+            color: #5b5b5b;
+            font-family: Roboto, Arial;
+            background-color: white;
+            -moz-user-select: text;
+            -webkit-user-select: text;
+            -ms-user-select: text;
+            user-select: text
+        }
+
+        .gm-style .directions-card-medium-large {
+            height: 61px;
+            padding: 10px 11px
+        }
+
+        .gm-style .directions-info {
+            padding-left: 25px
+        }
+
+        .gm-style .directions-waypoint {
+            height: 20px
+        }
+
+        .gm-style .directions-address {
+            font-weight: 400;
+            font-size: 13px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            color: black
+        }
+
+        .gm-style .directions-icon {
+            float: left;
+            vertical-align: top;
+            position: relative;
+            top: -1px;
+            height: 50px;
+            width: 20px
+        }
+
+        .gm-style .directions-icon div {
+            width: 15px;
+            height: 45px;
+            overflow: hidden
+        }
+
+        .gm-style .directions-separator {
+            position: relative;
+            height: 1px;
+            margin-top: 3px;
+            margin-bottom: 4px;
+            background-color: #ccc
+        }
+
+        .gm-style .navigate-icon {
+            background-position: 0 0
+        }
+
+        .gm-style .navigate:hover .navigate-icon {
+            background-position: 48px 0
+        }
+
+        .gm-style .rating-full-star {
+            background-position: 48px 165px
+        }
+
+        .gm-style .rating-half-star {
+            background-position: 35px 165px
+        }
+
+        html[dir="rtl"] .gm-style .rating-half-star {
+            background-position: 10px 165px
+        }
+
+        .gm-style .rating-empty-star {
+            background-position: 23px 165px
+        }
+
+        .gm-style .directions-icon {
+            background-position: 0 144px
+        }
+
+        .gm-style .info {
+            height: 30px;
+            width: 30px;
+            background-position: 19px 36px
+        }
+
+        .gm-style .bottom-actions {
+            padding-top: 10px
+        }
+
+        .gm-style .bottom-actions .google-maps-link {
+            display: inline-block
+        }
+
+        .saved-from-source-link {
+            margin-top: 5px;
+            max-width: 331px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div id="home" class="header-section flex-box-middle section gradiant-background overflow-hidden">
+            <div id="navigation" class="navigation is-transparent affix-top" data-spy="affix" data-offset-top="5">
+                <nav class="navbar  navbar-default">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#site-collapse-nav" aria-expanded="false" id="nav-btn">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="./index.html">
+                                <img class="logo logo-light" src="./static/img/subdigi.png" alt="logo">
+                                <img class="logo logo-color" src="./static/img/subdigi.png" alt="logo">
+                            </a>
+                        </div>
+                        <div class="collapse navbar-collapse font-secondary" id="site-collapse-nav">
+                            <ul class="nav nav-list navbar-nav navbar-right">
+                                <li><a class="nav-item" href="#home">Home</a></li>
+                                <li><a class="nav-item" href="#product">Product</a></li>
+                                <li class=""><a class="nav-item" href="#service">Service</a></li>
+                                <li class=""><a class="nav-item" href="#partners">Partners</a></li>
+                                <li><a class="nav-item" href="#about">About</a></li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container -->
+                </nav>
+            </div><!-- .navigation -->
+            <div class="header-content" id="product">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="header-texts">
+                                <div class="text-tp pt-120">Advertise to the right audience</div>
+                                <h1 class="cd-headline clip is-full-width wow fadeInUp" data-wow-duration=".5s"
+                                    style="visibility: visible; animation-duration: 0.5s; animation-name: fadeInUp;">
+                                    <span class="cd-words-wrapper">
+                                        <!-- <b class="is-hidden">Optimize ad revenue</b>style="width: 580px;  " -->
+                                        <b class="is-visible">Leading the future,
+                                            <div> Your product choice</div>
+                                        </b>
+                                    </span>
+                                </h1>
+                                <p class="lead wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".3s"
+                                    style="visibility: visible; animation-duration: 0.5s; animation-delay: 0.3s; animation-name: fadeInUp;">
+                                    Discover our innovative products and elevate your advertising strategy. SubDigi is
+                                    dedicated to delivering cutting-edge solutions that enhance your digital presence
+                                    and drive meaningful engagement.
+                                </p>
+                            </div>
+                        </div><!-- .col -->
+                        <div class="col-md-6">
+                            <!-- <div class="center-bg">
+                                <img src="./static/img/home-bg.png" alt="">
+                            </div> -->
+                            <div class="wow fadeInRight" data-wow-duration=".5s"
+                                style="visibility: visible; animation-duration: 0.5s; animation-name: fadeInRight;"><img
+                                    src="./static/img/home-bg.png" alt="header screen">
+                            </div>
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+                </div><!-- .container -->
+            </div><!-- .header-content -->
+        </div>
+
+        <div class="feature-boxes">
+            <div class="container">
+                <div class="feature-text">We are working with</div>
+                <div class="row text-center">
+                    <div class="col-md-2 col-sm-6">
+                        <div class="wow fadeInUp pb-20" data-wow-duration=".5s"
+                            style="visibility: visible; animation-duration: 0.5s; animation-name: fadeInUp;">
+                            <div class="box-icon-custom">
+                                <img src="./static/img/icon1.png" alt="Revenue Booster">
+                            </div>
+                        </div>
+                    </div><!-- .col -->
+                    <div class="col-md-2 col-sm-6">
+                        <div class="wow fadeInUp pb-20" data-wow-duration=".5s" data-wow-delay=".3s"
+                            style="visibility: visible; animation-duration: 0.5s; animation-delay: 0.3s; animation-name: fadeInUp;">
+                            <div class="box-icon-custom">
+                                <img src="./static/img/icon2.png" alt="Recovery Tool">
+                            </div>
+                        </div>
+                    </div><!-- .col -->
+                    <div class="col-md-2 col-sm-6">
+                        <div class="wow fadeInUp pb-20" data-wow-duration=".5s" data-wow-delay=".6s"
+                            style="visibility: visible; animation-duration: 0.5s; animation-delay: 0.6s; animation-name: fadeInUp;">
+                            <div class="box-icon-custom">
+                                <img src="./static/img/icon3.png" alt="ADS TOOL">
+                            </div>
+                        </div>
+                    </div><!-- .col -->
+                    <div class="col-md-2 col-sm-6">
+                        <div class="wow fadeInUp pb-20" data-wow-duration=".5s" data-wow-delay=".9s"
+                            style="visibility: visible; animation-duration: 0.5s; animation-delay: 0.9s; animation-name: fadeInUp;">
+                            <div class="box-icon-custom">
+                                <img src="./static/img/icon4.png" alt="Ad Mapper">
+                            </div>
+                        </div>
+                    </div><!-- .col -->
+                    <div class="col-md-2 col-sm-6">
+                        <div class="wow fadeInUp pb-20" data-wow-duration=".5s" data-wow-delay=".12s"
+                            style="visibility: visible; animation-duration: 0.5s; animation-delay: 1.2s; animation-name: fadeInUp;">
+                            <div class="box-icon-custom">
+                                <img src="./static/img/icon5.png" alt="ADS TOOL">
+                            </div>
+                        </div>
+                    </div><!-- .col -->
+                    <div class="col-md-2 col-sm-6">
+                        <div class="wow fadeInUp pb-20" data-wow-duration=".5s" data-wow-delay=".15s"
+                            style="visibility: visible; animation-duration: 0.5s; animation-delay: 1.5s; animation-name: fadeInUp;">
+                            <div class="box-icon-custom">
+                                <img src="./static/img/icon6.png" alt="Ad Mapper">
+                            </div>
+                        </div>
+                    </div><!-- .col -->
+                </div><!-- .row -->
+            </div><!-- .container -->
+        </div>
+
+        <div id="service" class="about-section section pb-120 white-bg">
+            <div class="container tab-fix">
+                <div class="section-head text-center">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="page-title">Accurate delivery to improve results</div>
+                            <div class="page-content ">Help users gain insights from data analysis and enable wise
+                                decision-making.</div>
+                        </div>
+                    </div>
+                </div><!-- .section-head -->
+                <div class="row  ">
+                    <div class="col-md-4 col-sm-12">
+                        <div class="box wow fadeInUp">
+                            <div class="box-icon-custom">
+                                <img src="./static/img/people1.png" style="width: 126.83px;height: 142.27px;" alt="">
+                            </div>
+                            <div class="tp-name">Website Analytics</div>
+                            <div class="bt-content">Analyze from multiple dimensions such as traffic, conversion
+                                rate and user experience</div>
+                        </div>
+                    </div><!-- .col -->
+                    <div class="col-md-4 col-sm-12">
+                        <div class="box wow fadeInUp">
+                            <div class="box-icon-custom">
+                                <img src="./static/img/people2.png" style="width: 156.68px;height: 144.61px;" alt="">
+                            </div>
+                            <div class="tp-name">Ad Campaign Analysis</div>
+                            <div class="bt-content">Analyze the data of advertising activities in depth, and we help
+                                you evaluate the advertising effect</div>
+                        </div>
+                    </div><!-- .col -->
+                    <div class="col-md-4 col-sm-12">
+                        <div class="box wow fadeInUp">
+                            <div class="box-icon-custom">
+                                <img src="./static/img/people3.png" style="width: 123.42px;height: 153.01px;" alt="">
+                            </div>
+                            <div class="tp-name">Data Reporting and Insights</div>
+                            <div class="bt-content">Provide professional data reports, intuitive data presentation
+                                and in-depth business insights</div>
+                        </div>
+                    </div><!-- .col -->
+                </div><!-- .row -->
+            </div><!-- .container -->
+        </div>
+
+        <div id="partners" class="features-section section bg-private">
+            <div class="container tab-fix">
+                <div class="section-head heading-light text-center">
+                    <div class="row">
+                        <div class="col-md-9 col-md-offset-2">
+                            <div class="pb-20">
+                                <h2 class="heading heading-light choose-name">Why choose us</h2>
+                            </div>
+                            <div class="page-content">People choose us because we serve the best for everyone</div>
+                        </div>
+                    </div>
+                </div><!-- .section-head -->
+                <div class="features-content pt-20" style="padding-bottom:7rem">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="home-numbers__item">
+                                <figure class="home-numbers__icon">
+                                    <img src="./static/img/flag1.png" alt="Earned for publishers">
+                                </figure>
+                                <div class="choose-texts">
+                                    <div class="choose-title">Website Analytics</div>
+                                    <div class="choose-content">Monitor and optimize website performance in real time to
+                                        improve user experience and conversion rate.</div>
+                                </div>
+                            </div>
+                        </div><!-- .col -->
+                        <div class="col-md-6 mb-3">
+                            <div class="home-numbers__item">
+                                <figure class="home-numbers__icon">
+                                    <img src="./static/img/flag2.png" alt="Earned for publishers">
+                                </figure>
+                                <div class="choose-texts">
+                                    <div class="choose-title">User Behavior Analysis</div>
+                                    <div class="choose-content">Analyze user clicks and browsing paths, optimize website
+                                        layout and content, and increase user stickiness.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="home-numbers__item">
+                                <figure class="home-numbers__icon">
+                                    <img src="./static/img/flag3.png" alt="Mobile applications">
+                                </figure>
+                                <div class="choose-texts">
+                                    <div class="choose-title">Ad Campaign Analysis</div>
+                                    <div class="choose-content">Measure advertising effectiveness, adjust delivery
+                                        strategies, improve advertising efficiency, and achieve higher ROI.</div>
+                                </div>
+                            </div>
+                        </div><!-- .col -->
+                        <div class="col-md-6 mb-3">
+                            <div class="home-numbers__item">
+                                <figure class="home-numbers__icon">
+                                    <img src="./static/img/flag4.png" alt="Mobile applications">
+                                </figure>
+                                <div class="choose-texts">
+                                    <div class="choose-title">Data Reporting and Insights</div>
+                                    <div class="choose-content">Generate customized reports to provide in-depth business
+                                        insights to help you make informed decisions.</div>
+                                </div>
+                            </div>
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+                </div><!-- .features-content -->
+            </div><!-- .container -->
+        </div>
+        <div class="statistics-section section white-background">
+            <div class="container">
+                <div class="section-head heading-light text-center">
+                    <div class="row pb-100">
+                        <div class="col-md-9 col-md-offset-2">
+                            <div class="pb-20">
+                                <h2 class="heading heading-light choose-name">Accurate delivery to improve results</h2>
+                            </div>
+                            <div class="page-content">Help users gain insights from data analysis and enable wise
+                                decision-making.</div>
+                        </div>
+                    </div><!-- .section-head -->
+                    <div class="row text-center">
+                        <div class="col-md-3 col-sm-6 mb-3">
+                            <div class="people-item wow fadeIn" data-wow-duration=".5s"
+                                style="visibility: visible; animation-duration: 0.5s; animation-name: fadeIn;">
+                                <div class="box-icon">
+                                    <img src="./static/img/play1.png" alt="">
+                                </div>
+                                <div class="box-title">Brendon M</div>
+                                <div class="box-content">CEO</div>
+                            </div>
+                        </div><!-- .col  -->
+                        <div class="col-md-3 col-sm-6 mb-3">
+                            <div class="people-item wow fadeIn" data-wow-duration=".5s" data-wow-delay=".3s"
+                                style="visibility: visible; animation-duration: 0.5s; animation-delay: 0.3s; animation-name: fadeIn;">
+                                <div class="box-icon">
+                                    <img src="./static/img/play2.png" alt="">
+                                </div>
+                                <div class="box-title">Jodi J. Appleby</div>
+                                <div class="box-content">Developer</div>
+                            </div>
+                        </div><!-- .col  -->
+                        <div class="col-md-3 col-sm-6 mb-3">
+                            <div class="people-item wow fadeIn" data-wow-duration=".5s" data-wow-delay=".6s"
+                                style="visibility: visible; animation-duration: 0.5s; animation-delay: 0.6s; animation-name: fadeIn;">
+                                <div class="box-icon">
+                                    <img src="./static/img/play3.png" alt="">
+                                </div>
+                                <div class="box-title">Justin S. Meza</div>
+                                <div class="box-content">Agent</div>
+                            </div>
+                        </div><!-- .col  -->
+                        <div class="col-md-3 col-sm-6 mb-3">
+                            <div class="people-item wow fadeIn" data-wow-duration=".5s" data-wow-delay=".9s"
+                                style="visibility: visible; animation-duration: 0.5s; animation-delay: 0.9s; animation-name: fadeIn;">
+                                <div class="box-icon">
+                                    <img src="./static/img/play4.png" alt="">
+                                </div>
+                                <div class="box-title">Brendon M</div>
+                                <div class="box-content">Agent</div>
+                            </div>
+                        </div><!-- .col  -->
+                    </div><!-- .row  -->
+                </div><!-- .container  -->
+            </div>
+        </div>
+
+        <div class="statistics-section section pb-90 white-background" id="partner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="header-texts">
+                            <div class="text-tp">TESTIMONIALS</div>
+                            <h1 class="cd-headline clip is-full-width wow fadeInUp" data-wow-duration=".5s"
+                                style="visibility: visible; animation-duration: 0.5s; animation-name: fadeInUp;">
+                                <span class="cd-words-wrapper">
+                                    <!-- <b class="is-hidden">Optimize ad revenue</b>style="width: 580px;  " -->
+                                    <b class="is-visible">Check out what our <div>customers say!</div>
+                                    </b>
+                                </span>
+                            </h1>
+                            <p class="lead wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".3s"
+                                style="visibility: visible; animation-duration: 0.5s; animation-delay: 0.3s; animation-name: fadeInUp;width: 80%;">
+                                Better understand user needs, provide deep business insights, and help you make
+                                informed decisions.
+                            </p>
+                            <div class="swiper-buttons">
+                                <button id="prev-button" class="page-button">
+                                    <img src="./static/img/prev.png" alt="">
+                                </button>
+                                <button id="next-button" class="page-button">
+                                    <img src="./static/img/next.png" alt="">
+                                </button>
+                            </div>
+                        </div>
+                    </div><!-- .col -->
+                    <div class="col-md-6">
+                        <div class="wow fadeInRight" data-wow-duration=".5s"
+                            style="visibility: visible; animation-duration: 0.5s; animation-name: fadeInRight;position: relative;">
+                            <div class="swiper mySwiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="slide-item">
+                                            <div class="line-icon"><img src="./static/img/line1.png" alt=""></div>
+                                            <div class="slide-item-text">SubDigi has transformed our digital presence.
+                                                Their AI advertising solutions have significantly boosted our revenue,
+                                                and their team is always ready to assist with any questions. Highly
+                                                recommend!</div>
+                                            <div class="flex-box-middle border-style"
+                                                style="justify-content: space-between;">
+                                                <div class="flex-box-middle">
+                                                    <div class="user-info">
+                                                        <img src="https://i.pinimg.com/564x/58/25/f8/5825f8901a91e78d5177aeeb56aba7ac.jpg"
+                                                            alt="">
+                                                    </div>
+                                                    <h4 class="user-name">Michael S., Marketing Director</h4>
+                                                </div>
+                                                <div class="flex-box-middle">
+                                                    <div class="start-line"><img src="./static/img/start1.png" alt="">
+                                                    </div>
+                                                    <div class="start-line"><img src="./static/img/start1.png" alt="">
+                                                    </div>
+                                                    <div class="start-line"><img src="./static/img/start1.png" alt="">
+                                                    </div>
+                                                    <div class="start-line"><img src="./static/img/start1.png" alt="">
+                                                    </div>
+                                                    <div class="start-line"><img src="./static/img/start2.png" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="slide-item">
+                                            <div class="line-icon"> <img src="./static/img/line1.png" alt=""></div>
+                                            <div class="slide-item-text">Working with SubDigi has been a game-changer
+                                                for us. Their content marketing and online advertising strategies have
+                                                helped us reach a wider audience and increase our engagement rates.
+                                                Exceptional service!</div>
+                                            <div class="flex-box-middle" style="justify-content: space-between;">
+                                                <div class="flex-box-middle border-style">
+                                                    <div class="user-info">
+                                                        <img src="https://i.pinimg.com/564x/21/bf/c2/21bfc201d8a04db10c884e7150065637.jpg"
+                                                            alt="">
+                                                    </div>
+                                                    <h4 class="user-name">Sarah L., Content Manager</h4>
+                                                </div>
+                                                <div class="flex-box-middle">
+                                                    <div class="start-line"><img src="./static/img/start1.png" alt="">
+                                                    </div>
+                                                    <div class="start-line"><img src="./static/img/start1.png" alt="">
+                                                    </div>
+                                                    <div class="start-line"><img src="./static/img/start1.png" alt="">
+                                                    </div>
+                                                    <div class="start-line"><img src="./static/img/start1.png" alt="">
+                                                    </div>
+                                                    <div class="start-line"><img src="./static/img/start2.png" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="slide-item">
+                                            <div class="line-icon"> <img src="./static/img/line1.png" alt=""></div>
+                                            <div class="slide-item-text">The web and mobile app development services
+                                                from SubDigi are top-notch. They created an intuitive and user-friendly
+                                                app that our customers love. Their attention to detail is unmatched.
+                                            </div>
+                                            <div class="flex-box-middle" style="justify-content: space-between;">
+                                                <div class="flex-box-middle border-style">
+                                                    <div class="user-info">
+                                                        <img src="https://i.pinimg.com/564x/cf/84/b9/cf84b94a757bbb9124cd4646d8069433.jpg"
+                                                            alt="">
+                                                    </div>
+                                                    <h4 class="user-name">John D., Product Manager</h4>
+                                                </div>
+                                                <div class="flex-box-middle">
+                                                    <div class="start-line"><img src="./static/img/start1.png" alt="">
+                                                    </div>
+                                                    <div class="start-line"><img src="./static/img/start1.png" alt="">
+                                                    </div>
+                                                    <div class="start-line"><img src="./static/img/start1.png" alt="">
+                                                    </div>
+                                                    <div class="start-line"><img src="./static/img/start1.png" alt="">
+                                                    </div>
+                                                    <div class="start-line"><img src="./static/img/start2.png" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div><!-- .col -->
+                </div><!-- .row -->
+            </div><!-- .container  -->
+        </div>
+
+        <div id="about" class="contact-section section pb-90">
+            <div class="container">
+                <div class="flex-box-middle heading-light text-center footer-bg ">
+                    <div class="item-icon"><img src="./static/img/item1.png" alt=""></div>
+                    <div class="row">
+                        <div class="col-md-4"> </div>
+                        <!--  col-md-offset-2 -->
+                        <div class="col-md-5 col-sm-6">
+                            <div class="text-left item-title">Contact Us</div>
+                            <div class="text-left item-content">Have questions or need more information? Click the
+                                button to
+                                contact our team
+                                via email and we'll get back to you as soon as possible!</div>
+                        </div>
+                        <div class="col-md-2 col-sm-6 text-center   pt-50">
+                            <div class="send-btn">
+                                <a href="mailto:info@subdigi.com">send email</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- .container  -->
+        </div>
+
+        <div class="footer-section section">
+            <div class="container">
+                <div class="row text-center footer-line">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="footer-lf">
+                            <a href="./index.html">
+                                <img class="logo logo-light" src="./static/img/white-logo.png" alt="logo">
+                            </a>
+                            <div class="footer-lf-content">
+                                Driving Growth through Digital Excellence
+                                Terms of Conditions. Privacy Policy
+                            </div>
+                        </div>
+
+                    </div><!-- .col  -->
+                    <div class="col-md-6 col-sm-12">
+                        <ul class="footer-navigation inline-list">
+                            <li><a class="nav-item" href="#home">Home</a></li>
+                            <li><a class="nav-item" href="#product">Product</a></li>
+                            <li><a class="nav-item" href="#service">Service</a></li>
+                            <li><a class="nav-item" href="#partners">Partners</a></li>
+                            <li><a class="nav-item" href="#about">About</a></li>
+                        </ul>
+                        <ul class="footer-links inline-list">
+                            <li>
+                                <div class="banner-icon">
+                                    <img src="./static/img/banner1.png" alt="">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="banner-icon">
+                                    <img src="./static/img/banner2.png" alt="">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="banner-icon">
+                                    <img src="./static/img/banner3.png" alt="">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="banner-icon">
+                                    <img src="./static/img/banner4.png" alt="">
+                                </div>
+                            </li>
+
+                        </ul>
+                        <!-- <ul class="footer-links inline-list">
+                            <li>Copyright © 2024 Rustclick.</li>
+                        </ul> -->
+                    </div><!-- .col  -->
+                </div><!-- .row  -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center copy-right"> &copy;2024 Subdigi – All rights reserved
+                        </div>
+                    </div>
+                </div>
+            </div><!-- .container  -->
+        </div>
+
+    </div>
+    <!-- scripts -->
+
+    <script src="./static/js/swiper-bundle.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<svg width="276" height="85" viewBox="0 0 276 85" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 1261156677">
+<g id="Icon">
+<g id="Icon_2">
+<g id="Icon_3">
+<rect id="Rectangle 1020" x="36.9688" y="5.82812" width="24.5143" height="23.5714" rx="3.77143" fill="#A8FE3B"/>
+<rect id="Rectangle 1021" x="36.9688" y="34.1133" width="24.5143" height="23.5714" rx="3.77143" fill="#A8FE3B"/>
+<rect id="Rectangle 1022" x="7.74219" y="34.1133" width="24.5143" height="23.5714" rx="3.77143" fill="#A8FE3B"/>
+<rect id="Rectangle 1023" x="0.199219" y="0.171875" width="32.0571" height="30.1714" rx="3.77143" fill="#FFC164"/>
+<line id="Line 8" x1="16.6994" y1="8.18772" x2="16.6994" y2="23.2734" stroke="white" stroke-width="2.82857" stroke-linecap="round"/>
+<line id="Line 9" x1="9.15647" y1="15.7302" x2="24.2422" y2="15.7302" stroke="white" stroke-width="2.82857" stroke-linecap="round"/>
+</g>
+</g>
+<g id="Rectangle 1017" filter="url(#filter0_b_2088_71518)">
+<rect x="36" y="32" width="240" height="45" rx="9.42857" fill="#EDEDFF" fill-opacity="0.5"/>
+<rect x="36.4714" y="32.4714" width="239.057" height="44.0571" rx="8.95714" stroke="#EAEAF7" stroke-width="0.942857" style="mix-blend-mode:multiply"/>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_b_2088_71518" x="26.5714" y="22.5714" width="258.857" height="63.8571" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="4.71429"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_2088_71518"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_2088_71518" result="shape"/>
+</filter>
+</defs>
+</svg>

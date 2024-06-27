@@ -1,0 +1,49 @@
+@import "../font/font.css";
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #1D1D1F;
+    font-family: Poppins-Regular;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+.w {
+    width: 1370px !important;
+    margin: 0 auto !important;
+}
+
+.content-rt {
+    width: 1100px;
+}
+
+.phone-bg {
+    width: 590px;
+    height: 590px;
+    margin: 0 auto;
+}
+
+
+
+
+
+.navigation {
+    width: 1067px;
+}
+
+
+
+
+.circle-bg {
+    width: 877px;
+    height: 882px;
+    position: absolute;
+    top: -351px;
+    left: -265px;
+    z-index: -1;
+    background-image: url('../images/bg.svg');
+}
